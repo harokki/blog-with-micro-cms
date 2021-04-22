@@ -40,6 +40,7 @@ module.exports = {
   ],
   root: true,
   rules: {
+    "jsx-a11y/anchor-is-valid": "off",
     "no-use-before-define": "off",
     "@typescript-eslint/no-use-before-define": ["error"],
     'lines-between-class-members': [

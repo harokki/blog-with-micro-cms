@@ -1,0 +1,67 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0 auto;
+}
+
+p {
+  font-size: 0.875rem;
+}
+
+footer {
+  padding: 26px 0;
+  margin-top: auto;
+  text-align: center;
+  background: #432;
+}
+
+footer p {
+  font-size: 0.875rem;
+  color: #fff;
+}
+
+h2 {
+  padding-bottom: 0.5rem;
+  margin: 10px 0 10px 0;
+  font-size: 1.25rem;
+  border-bottom-color: rgb(248, 145, 116);
+  border-bottom-style: solid;
+  border-bottom-width: 4px;
+}
+
+h3 {
+  padding-left: 0.5rem;
+  margin: 10px 0 10px 0;
+  border-left-color: rgb(248, 145, 116);
+  border-left-style: solid;
+  border-left-width: 5px;
+}
+
+ul {
+  margin-left: 10px;
+  font-size: 0.875rem;
+  list-style: inside;
+}
+
+ul li ul li {
+  list-style-type: circle;
+}
+
+pre {
+  padding: 1em; /* ブロック内の余白 */
+  margin: 1em 0; /* ブロック前後の余白 */
+  color: #fff; /* 文字色 */
+  white-space: pre-wrap; /* はみ出たときに折り返す */
+  background: #25292f; /* 背景色 */
+  border-radius: 5px; /* 角丸 */
+}
+
+:not(pre) > code {
+  padding: 2px 4px;
+  margin: 0 2px;
+  font-size: 85%;
+  color: #ff357f;
+  background-color: #f0f0f0;
+  border: 1px solid #ddd;
+}

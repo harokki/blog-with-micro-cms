@@ -1,0 +1,20 @@
+.blogWrapper {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 60%;
+  padding: 10px;
+  margin: 0 auto;
+  border-bottom: 1px solid #8c8b8b;
+}
+
+@media only screen and (max-width: 750px) {
+  .blogWrapper {
+    width: 90%;
+  }
+}
+
+.blogLink {
+  margin: 2px;
+  font-size: 1.25rem;
+}
