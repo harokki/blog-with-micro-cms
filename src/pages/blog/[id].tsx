@@ -1,11 +1,12 @@
 import React from 'react';
 import { InferGetStaticPropsType, NextPage } from 'next';
-import { BlogListResponse, BlogResponse } from 'types/blog';
 import Head from 'next/head';
+
 import { SiteHeader } from 'components/site-header';
 import { Footer } from 'components/footer';
 import { utcToJST } from 'utils';
-
+import { getBlog } from 'domains/microCMS/services/get-blog';
+import { getBlogList } from 'domains/microCMS/services/get-blog-list';
 import styles from './index.module.css';
 
 type P = InferGetStaticPropsType<typeof getStaticProps>;
@@ -37,12 +38,7 @@ export const getStaticPaths = async (): Promise<{
   paths: string[];
   fallback: boolean;
 }> => {
-  const key = {
-    headers: { 'X-API-KEY': process.env.API_KEY },
-  } as RequestInit;
-  const data = (await fetch(`${process.env.API_ENDPOINT as string}/blog`, key)
-    .then((res) => res.json())
-    .catch(() => null)) as BlogListResponse;
+  const data = await getBlogList();
   const paths = data.contents.map((content) => `/blog/${content.id}`);
 
   return { paths, fallback: false };
@@ -52,15 +48,7 @@ export const getStaticPaths = async (): Promise<{
 export const getStaticProps = async (context: any) => {
   // eslint-disable-next-line
   const { id } = context.params;
-  const key = {
-    headers: { 'X-API-KEY': process.env.API_KEY },
-  } as RequestInit;
-  const data = (await fetch(
-    `${process.env.API_ENDPOINT as string}/blog/${id as string}`,
-    key,
-  )
-    .then((res) => res.json())
-    .catch(() => null)) as BlogResponse;
+  const data = await getBlog(id as string);
 
   return {
     props: {

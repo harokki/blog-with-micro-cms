@@ -3,13 +3,12 @@ import React from 'react';
 import { NextPage, InferGetStaticPropsType } from 'next';
 import Head from 'next/head';
 
-import { BlogListResponse } from 'types/blog';
 import Link from 'next/link';
 import { SiteHeader } from 'components/site-header';
 import { Footer } from 'components/footer';
-
 import { utcToJST } from 'utils';
 import { siteName } from 'index';
+import { getBlogList } from 'domains/microCMS/services/get-blog-list';
 import styles from './index.module.css';
 
 type P = InferGetStaticPropsType<typeof getStaticProps>;
@@ -43,12 +42,7 @@ const Index: NextPage<P> = ({ blogs }) => {
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export const getStaticProps = async () => {
-  const key = {
-    headers: { 'X-API-KEY': process.env.API_KEY },
-  } as RequestInit;
-  const data = (await fetch(`${process.env.API_ENDPOINT as string}/blog`, key)
-    .then((res) => res.json())
-    .catch(() => null)) as BlogListResponse;
+  const data = await getBlogList();
 
   return {
     props: {
