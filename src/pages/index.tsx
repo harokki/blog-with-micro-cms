@@ -6,18 +6,12 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { SiteHeader } from 'components/site-header';
 import { Footer } from 'components/footer';
-import { utcToJST } from 'utils';
+import { bodyToDescription, utcToJST } from 'utils';
 import { siteName } from 'index';
 import { getBlogList } from 'domains/microCMS/services/get-blog-list';
 import styles from './index.module.css';
 
 type P = InferGetStaticPropsType<typeof getStaticProps>;
-
-const bodyToDescription = (body: string | undefined) => {
-  const description = body || '';
-
-  return description.substring(0, 99).replace(/(<([^>]+)>)/gi, '');
-};
 
 const Index: NextPage<P> = ({ blogs }) => {
   return (
@@ -32,7 +26,7 @@ const Index: NextPage<P> = ({ blogs }) => {
           <h1 className={styles.blogLink}>
             <Link href={`/blog/${blog.id}`}>{blog.title}</Link>
           </h1>
-          <p>{bodyToDescription(blog.body)}</p>
+          <p>{bodyToDescription(blog.body, 100)}</p>
         </section>
       ))}
       <Footer />

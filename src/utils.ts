@@ -8,3 +8,12 @@ export const utcToJST = (isoString: string): string => {
 
   return jstString;
 };
+
+export const bodyToDescription = (
+  body: string | undefined,
+  wordCount: number,
+): string | undefined => {
+  const description = body || '';
+
+  return description.replace(/(<([^>]+)>)/gi, '').substring(0, wordCount);
+};
