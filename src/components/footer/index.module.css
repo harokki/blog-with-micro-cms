@@ -1,0 +1,7 @@
+.privacyPolicy {
+  cursor: pointer;
+}
+
+.privacyPolicy:hover {
+  text-decoration: underline;
+}

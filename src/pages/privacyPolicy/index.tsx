@@ -9,19 +9,19 @@ import commonStyles from '../index.module.css';
 
 type P = InferGetStaticPropsType<typeof getStaticProps>;
 
-const AboutAuthor: NextPage<P> = ({ author }) => {
+const PrivacyPolicy: NextPage<P> = ({ privacy }) => {
   return (
     <div className="wrapper">
       <Head>
-        <title>{author.title}</title>
+        <title>{privacy.title}</title>
       </Head>
       <SiteHeader />
       <main className={commonStyles.blogContent}>
-        <h1 className={commonStyles.title}>{author.title}</h1>
+        <h1 className={commonStyles.title}>{privacy.title}</h1>
         <div
           // eslint-disable-next-line react/no-danger
           dangerouslySetInnerHTML={{
-            __html: `${author.body ? author.body : ''}`,
+            __html: `${privacy.body ? privacy.body : ''}`,
           }}
         />
       </main>
@@ -32,13 +32,13 @@ const AboutAuthor: NextPage<P> = ({ author }) => {
 
 // eslint-disable-next-line
 export const getStaticProps = async () => {
-  const data = await getAbout('author');
+  const data = await getAbout('privacy');
 
   return {
     props: {
-      author: data,
+      privacy: data,
     },
   };
 };
 
-export default AboutAuthor;
+export default PrivacyPolicy;
