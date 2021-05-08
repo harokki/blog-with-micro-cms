@@ -7,7 +7,7 @@ import { Footer } from 'components/footer';
 import { utcToJST } from 'utils';
 import { getBlog } from 'domains/microCMS/services/get-blog';
 import { getBlogList } from 'domains/microCMS/services/get-blog-list';
-import styles from './index.module.css';
+import commonStyles from '../index.module.css';
 
 type P = InferGetStaticPropsType<typeof getStaticProps>;
 
@@ -18,9 +18,9 @@ const BlogId: NextPage<P> = ({ blog }) => {
         <title>{blog.title}</title>
       </Head>
       <SiteHeader />
-      <main className={styles.blogContent}>
-        <h1 className={styles.title}>{blog.title}</h1>
-        <p className={styles.publishedAt}>{utcToJST(blog.publishedAt)}</p>
+      <main className={commonStyles.blogContent}>
+        <h1 className={commonStyles.title}>{blog.title}</h1>
+        <p className={commonStyles.publishedAt}>{utcToJST(blog.publishedAt)}</p>
         <div
           // eslint-disable-next-line react/no-danger
           dangerouslySetInnerHTML={{

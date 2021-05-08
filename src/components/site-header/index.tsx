@@ -8,6 +8,9 @@ export const SiteHeader: React.FC = () => {
   const handleClickLogo = React.useCallback(() => {
     void router.push('/');
   }, [router]);
+  const handleClickAbout = React.useCallback(() => {
+    void router.push('/about');
+  }, [router]);
 
   return (
     <header className={styles.pageHeader}>
@@ -21,6 +24,9 @@ export const SiteHeader: React.FC = () => {
         <ul className={styles.mainNav}>
           <li onClick={() => handleClickLogo()} aria-hidden="true">
             Home
+          </li>
+          <li onClick={() => handleClickAbout()} aria-hidden="true">
+            About
           </li>
         </ul>
       </nav>

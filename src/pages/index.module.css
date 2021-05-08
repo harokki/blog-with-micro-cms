@@ -18,3 +18,26 @@
   margin: 2px;
   font-size: 1.25rem;
 }
+
+.blogContent {
+  width: 60%;
+  margin: 0 auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+@media only screen and (max-width: 750px) {
+  .blogContent {
+    width: 90%;
+  }
+}
+
+.title {
+  margin-bottom: 5px;
+  font-size: 2rem;
+}
+
+.publishedAt {
+  margin-bottom: 10px;
+  font-size: 0.8rem;
+}
