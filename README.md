@@ -1,32 +1,23 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-microCMS + Next.js のJamstackブログ
+microCMS + Next.js のJamstackブログ(Vercel デプロイ)
 
-## Getting Started
+このリポジトリで作成されたブログは[こちら](https://www.rokki-road.com/)です。
 
-First, run the development server:
+## localでの開発
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+1. 環境変数`.env.development.local`と`.env.local`にmicroCMSで作成したAPI_KEYとAPI_ENDPOINTを設定する。
+2. `src/index.ts`の`siteName`と`footerCopy`は自分で使いたい名前に変更する。
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## microCMS
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+### エンドポイント
 
-## Learn More
+- `/blog`
+  - blog記事のエンドポイント
+- `/about`
+  - プロフィール、プライバシーポリシーのエンドポイント
 
-To learn more about Next.js, take a look at the following resources:
+## Google Analytics
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/import?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Google Analyticsを設定したい場合は、Vercelの管理画面の`Settings > Environment Variables`に`NEXT_PUBLIC_GOOGLE_ANALYTICS_ID`を設定してください。
