@@ -1,3 +1,15 @@
+body {
+  font-family:
+    'Noto Sans Japanese',
+    '游ゴシック体',
+    'Yu Gothic',
+    yugothic,
+    'メイリオ',
+    meiryo,
+    osaka,
+    sans-serif;
+}
+
 .wrapper {
   display: flex;
   flex-direction: column;

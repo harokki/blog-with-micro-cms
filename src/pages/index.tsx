@@ -23,10 +23,12 @@ const Index: NextPage<P> = ({ blogs }) => {
       {blogs.map((blog) => (
         <section className={styles.blogWrapper} key={blog.id}>
           <p>{utcToJST(blog.createdAt)}</p>
-          <h1 className={styles.blogLink}>
-            <Link href={`/blog/${blog.id}`}>{blog.title}</Link>
-          </h1>
-          <p>{bodyToDescription(blog.body, 100)}</p>
+          <Link href={`/blog/${blog.id}`}>
+            <a className={styles.blogLink}>{blog.title}</a>
+          </Link>
+          <p className={styles.blogDescription}>
+            {bodyToDescription(blog.body, 100)}
+          </p>
         </section>
       ))}
       <Footer />
