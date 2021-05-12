@@ -48,6 +48,20 @@
   font-size: 2rem;
 }
 
+.categories {
+  margin-bottom: 5px;
+}
+
+.category {
+  padding: 0.25rem;
+  margin-right: 0.25rem;
+  margin-left: 0.25rem;
+  color: #fff;
+  background-color: #e0861a;
+  border: 1px solid #f5f5f5;
+  border-radius: 0.5rem;
+}
+
 .publishedAt {
   margin-bottom: 10px;
   font-size: 0.8rem;

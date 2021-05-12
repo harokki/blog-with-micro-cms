@@ -1,18 +1,22 @@
 import { ContentResponse, ListContentsResponse } from './api';
-import { TagResponse } from './tag';
+import { CategoryResponse, isCategoryResponses } from './category';
 
 export type BlogListResponse = ListContentsResponse<BlogResponse>;
 
 export type BlogResponse = ContentResponse<{
   title?: string;
   body?: string;
-  tags?: TagResponse[];
+  categories?: CategoryResponse[];
 }>;
 
 export const isBlogResponse = (arg: unknown): arg is BlogResponse => {
   const m = arg as BlogResponse;
 
-  return typeof m?.title === 'string' && typeof m?.body === 'string';
+  return (
+    typeof m?.title === 'string' &&
+    typeof m?.body === 'string' &&
+    isCategoryResponses(m?.categories || [])
+  );
 };
 
 export const isBlogResponses = (args: unknown[]): args is BlogResponse[] =>
