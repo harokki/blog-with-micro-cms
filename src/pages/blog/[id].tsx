@@ -1,6 +1,7 @@
 import React from 'react';
 import { InferGetStaticPropsType, NextPage } from 'next';
 import Head from 'next/head';
+import Link from 'next/link';
 
 import { SiteHeader } from 'components/site-header';
 import { Footer } from 'components/footer';
@@ -16,9 +17,11 @@ const blogCategories = (categories: CategoryResponse[]) => {
   return (
     <div className={commonStyles.categories}>
       {categories.map((category) => (
-        <span key={category.id} className={commonStyles.category}>
-          {category.name}
-        </span>
+        <Link href={`/category/${category.id}`}>
+          <span key={category.id} className={commonStyles.category}>
+            {category.name}
+          </span>
+        </Link>
       ))}
     </div>
   );
