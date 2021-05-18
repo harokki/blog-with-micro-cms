@@ -5,26 +5,23 @@ import Head from 'next/head';
 
 import { SiteHeader } from 'components/site-header';
 import { Footer } from 'components/footer';
-import { siteName } from 'index';
-import { getBlogListFilterByCategory } from 'domains/microCMS/services/get-blog-list';
-import {
-  getCategories,
-  getCategoryNameById,
-} from 'domains/microCMS/services/get-categoris';
+import { PER_PAGE, siteName } from 'index';
+import { getBlogList } from 'domains/microCMS/services/get-blog-list';
+import { Pagination } from 'components/pagination';
 import { BlogList } from 'components/blog/blog-list';
-import styles from './index.module.css';
+import { range } from 'utils';
 
 type P = InferGetStaticPropsType<typeof getStaticProps>;
 
-const CategoryId: NextPage<P> = ({ blogs, name }) => {
+const BlogPageId: NextPage<P> = ({ blogs, totalCount }) => {
   return (
     <div className="wrapper">
       <Head>
         <title>{siteName}</title>
       </Head>
       <SiteHeader />
-      <p className={styles.categoryTitle}>{name}に関する記事</p>
       <BlogList blogs={blogs} />
+      <Pagination totalCount={totalCount} />
       <Footer />
     </div>
   );
@@ -34,8 +31,11 @@ export const getStaticPaths = async (): Promise<{
   paths: string[];
   fallback: boolean;
 }> => {
-  const data = await getCategories();
-  const paths = data.contents.map((content) => `/category/${content.id}`);
+  const data = await getBlogList();
+  const { totalCount } = data;
+  const paths = range(1, Math.ceil(totalCount / PER_PAGE)).map(
+    (i) => `/blog/page/${i}`,
+  );
 
   return { paths, fallback: false };
 };
@@ -44,16 +44,14 @@ export const getStaticPaths = async (): Promise<{
 export const getStaticProps = async (context: any) => {
   // eslint-disable-next-line
   const { id } = context.params;
-  const stringId = id as string;
-  const data = await getBlogListFilterByCategory(stringId);
-  const name = await getCategoryNameById(stringId);
+  const data = await getBlogList((id - 1) * PER_PAGE);
 
   return {
     props: {
       blogs: data.contents,
-      name,
+      totalCount: data.totalCount,
     },
   };
 };
 
-export default CategoryId;
+export default BlogPageId;

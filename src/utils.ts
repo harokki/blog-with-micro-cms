@@ -17,3 +17,6 @@ export const bodyToDescription = (
 
   return description.replace(/(<([^>]+)>)/gi, '').substring(0, wordCount);
 };
+
+export const range = (start: number, end: number): number[] =>
+  Array.from({ length: end - start + 1 }, (_, i) => start + i);

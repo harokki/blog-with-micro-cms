@@ -3,34 +3,24 @@ import React from 'react';
 import { NextPage, InferGetStaticPropsType } from 'next';
 import Head from 'next/head';
 
-import Link from 'next/link';
 import { SiteHeader } from 'components/site-header';
 import { Footer } from 'components/footer';
-import { bodyToDescription, utcToJST } from 'utils';
 import { siteName } from 'index';
 import { getBlogList } from 'domains/microCMS/services/get-blog-list';
-import styles from './index.module.css';
+import { Pagination } from 'components/pagination';
+import { BlogList } from 'components/blog/blog-list';
 
 type P = InferGetStaticPropsType<typeof getStaticProps>;
 
-const Index: NextPage<P> = ({ blogs }) => {
+const Index: NextPage<P> = ({ blogs, totalCount }) => {
   return (
     <div className="wrapper">
       <Head>
         <title>{siteName}</title>
       </Head>
       <SiteHeader />
-      {blogs.map((blog) => (
-        <section className={styles.blogWrapper} key={blog.id}>
-          <p>{utcToJST(blog.createdAt)}</p>
-          <Link href={`/blog/${blog.id}`}>
-            <a className={styles.blogLink}>{blog.title}</a>
-          </Link>
-          <p className={styles.blogDescription}>
-            {bodyToDescription(blog.body, 100)}
-          </p>
-        </section>
-      ))}
+      <BlogList blogs={blogs} />
+      <Pagination totalCount={totalCount} />
       <Footer />
     </div>
   );
@@ -43,6 +33,7 @@ export const getStaticProps = async () => {
   return {
     props: {
       blogs: data.contents,
+      totalCount: data.totalCount,
     },
   };
 };
