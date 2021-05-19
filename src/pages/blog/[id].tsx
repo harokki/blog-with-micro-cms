@@ -1,5 +1,5 @@
 import React from 'react';
-import { InferGetStaticPropsType, NextPage } from 'next';
+import { GetStaticProps, GetStaticPropsContext, NextPage } from 'next';
 import Head from 'next/head';
 
 import { SiteHeader } from 'components/site-header';
@@ -7,8 +7,12 @@ import { Footer } from 'components/footer';
 import { getBlog } from 'domains/microCMS/services/get-blog';
 import { getBlogList } from 'domains/microCMS/services/get-blog-list';
 import { BlogContent } from 'components/content';
+import { BlogResponse } from 'domains/microCMS/models/blog';
+import { ContextParams } from 'index';
 
-type P = InferGetStaticPropsType<typeof getStaticProps>;
+type P = {
+  blog: BlogResponse;
+};
 
 const BlogId: NextPage<P> = ({ blog }) => {
   return (
@@ -34,11 +38,11 @@ export const getStaticPaths = async (): Promise<{
   return { paths, fallback: false };
 };
 
-// eslint-disable-next-line
-export const getStaticProps = async (context: any) => {
-  // eslint-disable-next-line
-  const { id } = context.params;
-  const data = await getBlog(id as string);
+export const getStaticProps: GetStaticProps = async (
+  context: GetStaticPropsContext,
+) => {
+  const { id } = context.params as ContextParams;
+  const data = await getBlog(id);
 
   return {
     props: {

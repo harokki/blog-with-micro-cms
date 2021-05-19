@@ -1,17 +1,22 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
-import { NextPage, InferGetStaticPropsType } from 'next';
+import { NextPage, GetStaticProps, GetStaticPropsContext } from 'next';
 import Head from 'next/head';
 
 import { SiteHeader } from 'components/site-header';
 import { Footer } from 'components/footer';
-import { PER_PAGE, siteName } from 'index';
+import { ContextParams, PER_PAGE, siteName } from 'index';
 import { getBlogList } from 'domains/microCMS/services/get-blog-list';
 import { BlogList } from 'components/blog/blog-list';
 import { range } from 'utils';
 import { PaginationArrow } from 'components/pagination/pagination-arrow';
+import { BlogResponse } from 'domains/microCMS/models/blog';
 
-type P = InferGetStaticPropsType<typeof getStaticProps>;
+type P = {
+  blogs: BlogResponse[];
+  totalCount: number;
+  currentPageNumber: number;
+};
 
 const BlogPageId: NextPage<P> = ({ blogs, totalCount, currentPageNumber }) => {
   return (
@@ -45,18 +50,18 @@ export const getStaticPaths = async (): Promise<{
   return { paths, fallback: false };
 };
 
-// eslint-disable-next-line
-export const getStaticProps = async (context: any) => {
-  // eslint-disable-next-line
-  const { id } = context.params;
-  const currentPageNumber = Number(id);
-  const data = await getBlogList((id - 1) * PER_PAGE);
+export const getStaticProps: GetStaticProps = async (
+  context: GetStaticPropsContext,
+) => {
+  const { id } = context.params as ContextParams;
+  const numId = Number(id);
+  const data = await getBlogList((numId - 1) * PER_PAGE);
 
   return {
     props: {
       blogs: data.contents,
       totalCount: data.totalCount,
-      currentPageNumber,
+      currentPageNumber: numId,
     },
   };
 };
