@@ -5,7 +5,7 @@ import Head from 'next/head';
 import { SiteHeader } from 'components/site-header';
 import { Footer } from 'components/footer';
 import { getAbout } from 'domains/microCMS/services/get-about';
-import commonStyles from '../index.module.css';
+import { AboutContent } from 'components/content';
 
 type P = InferGetStaticPropsType<typeof getStaticProps>;
 
@@ -16,15 +16,7 @@ const PrivacyPolicy: NextPage<P> = ({ privacy }) => {
         <title>{privacy.title}</title>
       </Head>
       <SiteHeader />
-      <main className={commonStyles.blogContent}>
-        <h1 className={commonStyles.title}>{privacy.title}</h1>
-        <div
-          // eslint-disable-next-line react/no-danger
-          dangerouslySetInnerHTML={{
-            __html: `${privacy.body ? privacy.body : ''}`,
-          }}
-        />
-      </main>
+      <AboutContent content={privacy} />
       <Footer />
     </div>
   );
