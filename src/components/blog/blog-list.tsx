@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 import { BlogResponse } from 'domains/microCMS/models/blog';
 import { bodyToDescription, utcToJST } from 'utils';
-import styles from 'pages/index.module.css';
+import styles from './index.module.css';
 
 type P = {
   blogs: BlogResponse[];

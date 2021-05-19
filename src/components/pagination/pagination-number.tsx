@@ -6,13 +6,14 @@ import { PER_PAGE } from 'index';
 import styles from './index.module.css';
 
 type P = {
-  totalCount: number;
+  // Math.ceil(totalCount / PER_PAGE)を渡す
+  maxPageNumber: number;
 };
 
-export const Pagination: React.FC<P> = ({ totalCount }) => {
+export const PaginationNumber: React.FC<P> = ({ maxPageNumber }) => {
   return (
     <ul className={styles.paginationNav}>
-      {range(1, Math.ceil(totalCount / PER_PAGE)).map((number, index) => (
+      {range(1, maxPageNumber).map((number, index) => (
         // eslint-disable-next-line react/no-array-index-key
         <li key={index}>
           <Link href={`/blog/page/${number}`}>

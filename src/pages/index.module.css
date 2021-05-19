@@ -1,35 +1,3 @@
-.blogWrapper {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  width: 60%;
-  padding: 10px;
-  margin: 0 auto;
-  border-bottom: 1px solid #8c8b8b;
-}
-
-@media only screen and (max-width: 750px) {
-  .blogWrapper {
-    width: 90%;
-  }
-}
-
-.blogLink {
-  margin: 2px;
-  font-size: 1.25rem;
-  color: #1a202c;
-  text-decoration: none;
-}
-
-.blogLink:hover {
-  color: #98514b;
-}
-
-.blogDescription {
-  color: #1a202c;
-  opacity: 0.6;
-}
-
 .blogContent {
   width: 60%;
   margin: 0 auto;

@@ -17,6 +17,21 @@ body {
   margin: 0 auto;
 }
 
+.main-wrapper {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 60%;
+  padding: 10px;
+  margin: 0 auto;
+}
+
+@media only screen and (max-width: 750px) {
+  .main-wrapper {
+    width: 90%;
+  }
+}
+
 p {
   font-size: 0.875rem;
 }

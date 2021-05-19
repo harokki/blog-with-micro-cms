@@ -1,0 +1,20 @@
+.blogWrapper {
+  padding: 10px;
+  border-bottom: 1px solid #8c8b8b;
+}
+
+.blogLink {
+  margin: 2px;
+  font-size: 1.25rem;
+  color: #1a202c;
+  text-decoration: none;
+}
+
+.blogLink:hover {
+  color: #98514b;
+}
+
+.blogDescription {
+  color: #1a202c;
+  opacity: 0.6;
+}

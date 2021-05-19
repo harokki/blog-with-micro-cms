@@ -24,7 +24,9 @@ const CategoryId: NextPage<P> = ({ blogs, name }) => {
       </Head>
       <SiteHeader />
       <p className={styles.categoryTitle}>{name}に関する記事</p>
-      <BlogList blogs={blogs} />
+      <div className="main-wrapper">
+        <BlogList blogs={blogs} />
+      </div>
       <Footer />
     </div>
   );

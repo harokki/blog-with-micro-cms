@@ -5,10 +5,10 @@ import Head from 'next/head';
 
 import { SiteHeader } from 'components/site-header';
 import { Footer } from 'components/footer';
-import { siteName } from 'index';
+import { PER_PAGE, siteName } from 'index';
 import { getBlogList } from 'domains/microCMS/services/get-blog-list';
-import { Pagination } from 'components/pagination';
 import { BlogList } from 'components/blog/blog-list';
+import { PaginationArrow } from 'components/pagination/pagination-arrow';
 
 type P = InferGetStaticPropsType<typeof getStaticProps>;
 
@@ -19,8 +19,13 @@ const Index: NextPage<P> = ({ blogs, totalCount }) => {
         <title>{siteName}</title>
       </Head>
       <SiteHeader />
-      <BlogList blogs={blogs} />
-      <Pagination totalCount={totalCount} />
+      <div className="main-wrapper">
+        <BlogList blogs={blogs} />
+        <PaginationArrow
+          currentPageNumber={1}
+          maxPageNumber={Math.ceil(totalCount / PER_PAGE)}
+        />
+      </div>
       <Footer />
     </div>
   );
