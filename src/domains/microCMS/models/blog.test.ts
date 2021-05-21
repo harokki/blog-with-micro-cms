@@ -7,6 +7,7 @@ describe('BlogResponse model', () => {
         title: 'dummy',
         body: 'dummy',
         categories: [{ name: 'dummy' }],
+        externalUrl: 'dummy',
       }),
     ).toBeTruthy();
   });
@@ -20,7 +21,12 @@ describe('BlogResponse model', () => {
   it('isBlogResponses is true', () => {
     expect(
       isBlogResponses([
-        { title: 'dummy1', body: 'dummy1', categories: [{ name: 'dummy' }] },
+        {
+          title: 'dummy1',
+          body: 'dummy1',
+          categories: [{ name: 'dummy' }],
+          externalUrl: null,
+        },
         { title: 'dummy2', body: 'dummy2' },
       ]),
     ).toBeTruthy();

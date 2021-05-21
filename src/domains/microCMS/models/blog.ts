@@ -4,9 +4,10 @@ import { CategoryResponse, isCategoryResponses } from './category';
 export type BlogListResponse = ListContentsResponse<BlogResponse>;
 
 export type BlogResponse = ContentResponse<{
-  title?: string;
-  body?: string;
+  title: string;
+  body: string;
   categories?: CategoryResponse[];
+  externalUrl?: string | null;
 }>;
 
 export const isBlogResponse = (arg: unknown): arg is BlogResponse => {
@@ -15,7 +16,8 @@ export const isBlogResponse = (arg: unknown): arg is BlogResponse => {
   return (
     typeof m?.title === 'string' &&
     typeof m?.body === 'string' &&
-    isCategoryResponses(m?.categories || [])
+    isCategoryResponses(m?.categories || []) &&
+    typeof (m?.externalUrl || '') === 'string'
   );
 };
 

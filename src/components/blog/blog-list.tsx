@@ -1,9 +1,9 @@
 import React from 'react';
-import Link from 'next/link';
 
 import { BlogResponse } from 'domains/microCMS/models/blog';
 import { bodyToDescription, utcToJST } from 'utils';
 import styles from './index.module.css';
+import { BlogLink } from './blog-link';
 
 type P = {
   blogs: BlogResponse[];
@@ -15,9 +15,7 @@ export const BlogList: React.FC<P> = ({ blogs }) => {
       {blogs.map((blog) => (
         <section className={styles.blogWrapper} key={blog.id}>
           <p>{utcToJST(blog.createdAt)}</p>
-          <Link href={`/blog/${blog.id}`}>
-            <a className={styles.blogLink}>{blog.title}</a>
-          </Link>
+          <BlogLink blog={blog} />
           <p className={styles.blogDescription}>
             {bodyToDescription(blog.body, 100)}
           </p>
