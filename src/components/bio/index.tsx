@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { CategoryResponse } from 'domains/microCMS/models/category';
+import Link from 'next/link';
 import styles from './index.module.css';
 
 type P = {
@@ -25,10 +26,14 @@ export const Bio: React.FC<P> = ({ categories, selfIntroduction }) => {
         />
       </div>
       <div className="side-category">
-        <p className={styles.category}>カテゴリ一覧</p>
-        {categories?.map((category) => {
-          return <p key={category.id}>{category.name}</p>;
-        })}
+        <p className={styles.categoryTitle}>カテゴリ一覧</p>
+        {categories?.map((category) => (
+          <Link key={category.id} href={`/category/${category.id}`}>
+            <a key={category.id} className={styles.categoryTag}>
+              {category.name}
+            </a>
+          </Link>
+        ))}
       </div>
     </div>
   );
