@@ -2,7 +2,6 @@
 import React from 'react';
 import { NextPage, GetStaticProps } from 'next';
 
-import { Footer } from 'components/footer';
 import { PER_PAGE, siteName } from 'index';
 import { getBlogList } from 'domains/microCMS/services/get-blog-list';
 import { BlogList } from 'components/blog/blog-list';
@@ -11,9 +10,8 @@ import { BlogResponse } from 'domains/microCMS/models/blog';
 import { Header } from 'components/header/header';
 import { ContentLayout, MainContent, SideContent } from 'components/content';
 import { Bio } from 'components/bio';
-import { getAllCategories } from 'domains/microCMS/services/get-categoris';
 import { CategoryResponse } from 'domains/microCMS/models/category';
-import { getAbout } from 'domains/microCMS/services/get-about';
+import { getSideMenuItem } from 'domains/microCMS/services/utils';
 
 type P = {
   blogs: BlogResponse[];
@@ -29,7 +27,7 @@ const Index: NextPage<P> = ({
   selfIntroduction,
 }) => {
   return (
-    <div className="wrapper">
+    <>
       <Header title={siteName} />
       <ContentLayout>
         <MainContent>
@@ -43,22 +41,20 @@ const Index: NextPage<P> = ({
           <Bio categories={categories} selfIntroduction={selfIntroduction} />
         </SideContent>
       </ContentLayout>
-      <Footer />
-    </div>
+    </>
   );
 };
 
 export const getStaticProps: GetStaticProps = async () => {
   const data = await getBlogList();
-  const categoryData = await getAllCategories();
-  const authorData = await getAbout('author');
+  const { categories, selfIntroduction } = await getSideMenuItem();
 
   return {
     props: {
       blogs: data.contents,
       totalCount: data.totalCount,
-      categories: categoryData.contents,
-      selfIntroduction: authorData.body,
+      categories,
+      selfIntroduction,
     },
   };
 };

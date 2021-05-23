@@ -1,7 +1,6 @@
 import React from 'react';
 import { GetStaticProps, GetStaticPropsContext, NextPage } from 'next';
 
-import { Footer } from 'components/footer';
 import { getBlog } from 'domains/microCMS/services/get-blog';
 import { getBlogList } from 'domains/microCMS/services/get-blog-list';
 import { ContentLayout, MainContent, SideContent } from 'components/content';
@@ -11,8 +10,7 @@ import { Header } from 'components/header/header';
 import { BlogContent } from 'components/content/blog-content';
 import { Bio } from 'components/bio';
 import { CategoryResponse } from 'domains/microCMS/models/category';
-import { getAllCategories } from 'domains/microCMS/services/get-categoris';
-import { getAbout } from 'domains/microCMS/services/get-about';
+import { getSideMenuItem } from 'domains/microCMS/services/utils';
 
 type P = {
   blog: BlogResponse;
@@ -22,7 +20,7 @@ type P = {
 
 const BlogId: NextPage<P> = ({ blog, categories, selfIntroduction }) => {
   return (
-    <div className="wrapper">
+    <>
       <Header title={blog.title} />
       <ContentLayout>
         <MainContent>
@@ -32,8 +30,7 @@ const BlogId: NextPage<P> = ({ blog, categories, selfIntroduction }) => {
           <Bio categories={categories} selfIntroduction={selfIntroduction} />
         </SideContent>
       </ContentLayout>
-      <Footer />
-    </div>
+    </>
   );
 };
 
@@ -54,14 +51,13 @@ export const getStaticProps: GetStaticProps = async (
 ) => {
   const { id } = context.params as ContextParams;
   const data = await getBlog(id);
-  const dataCategory = await getAllCategories();
-  const authorData = await getAbout('author');
+  const { categories, selfIntroduction } = await getSideMenuItem();
 
   return {
     props: {
       blog: data,
-      categories: dataCategory.contents,
-      selfIntroduction: authorData.body,
+      categories,
+      selfIntroduction,
     },
   };
 };

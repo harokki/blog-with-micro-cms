@@ -2,6 +2,7 @@ import React from 'react';
 import { AppProps } from 'next/app';
 
 import { usePageView } from 'hooks/usePageView';
+import { Footer } from 'components/footer';
 import 'minireset.css';
 import '../base.css';
 
@@ -9,8 +10,13 @@ import '../base.css';
 const MyApp = ({ Component, pageProps }: AppProps) => {
   usePageView();
 
-  // eslint-disable-next-line react/jsx-props-no-spreading
-  return <Component {...pageProps} />;
+  return (
+    <div className="wrapper">
+      {/* eslint-disable-next-line react/jsx-props-no-spreading */}
+      <Component {...pageProps} />
+      <Footer />
+    </div>
+  );
 };
 
 export default MyApp;
