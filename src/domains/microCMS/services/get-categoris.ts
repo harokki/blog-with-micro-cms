@@ -4,8 +4,24 @@ import {
 } from '../models/category';
 import { api } from './config';
 
-export const getCategories = async (): Promise<CategoryListResponse> => {
+const getCategoryCouont = async (): Promise<number> => {
   const response = await api.get('categories');
+  const categoryListResponse = (await response.json()) as unknown;
+
+  if (!isCategoryListResponse(categoryListResponse)) {
+    throw Error('API type error');
+  }
+
+  return categoryListResponse.totalCount;
+};
+
+export const getAllCategories = async (): Promise<CategoryListResponse> => {
+  const limit = await getCategoryCouont();
+  const response = await api.get('categories', {
+    searchParams: {
+      limit,
+    },
+  });
   const categoryListResponse = (await response.json()) as unknown;
 
   if (!isCategoryListResponse(categoryListResponse)) {

@@ -3,8 +3,8 @@ import { ContentResponse, ListContentsResponse } from './api';
 export type AboutListResponse = ListContentsResponse<AboutResponse>;
 
 export type AboutResponse = ContentResponse<{
-  title?: string;
-  body?: string;
+  title: string;
+  body: string;
 }>;
 
 export const isAboutResponse = (arg: unknown): arg is AboutResponse => {

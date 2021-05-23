@@ -17,18 +17,42 @@ body {
   margin: 0 auto;
 }
 
-.main-wrapper {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  width: 60%;
+.content-wrapper {
+  width: 80%;
   padding: 10px;
   margin: 0 auto;
 }
 
+.content-layout {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 50px;
+}
+
+.main-content {
+  width: 70%;
+  margin-right: 40px;
+}
+
+.side-content {
+  width: 30%;
+}
+
 @media only screen and (max-width: 750px) {
-  .main-wrapper {
+  .content-wrapper {
     width: 90%;
+  }
+
+  .content-layout {
+    flex-direction: column;
+  }
+
+  .main-content {
+    width: 100%;
+  }
+
+  .side-content {
+    width: 100%;
   }
 }
 

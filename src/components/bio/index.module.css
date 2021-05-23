@@ -1,0 +1,37 @@
+.userIcon {
+  width: 64px;
+  height: 64px;
+  cursor: pointer;
+  border-radius: 32px;
+}
+
+.bioHeader {
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+}
+
+.bioName {
+  margin-left: 10px;
+}
+
+.bioMain {
+  margin-top: 1em;
+}
+
+.bioWrapper {
+  position: sticky;
+  top: 1em;
+  padding: 1.5rem;
+  color: white;
+  background-color: peru;
+  border-radius: 6px;
+}
+
+.bioDescription {
+  margin-bottom: 10px;
+}
+
+.category {
+  font-size: 1.2rem;
+}
