@@ -15,24 +15,23 @@ body {
   flex-direction: column;
   min-height: 100vh;
   margin: 0 auto;
+  background-color: #f1ece8;
 }
 
 .content-wrapper {
   width: 80%;
-  padding: 10px;
+  padding: 30px;
   margin: 0 auto;
 }
 
 .content-layout {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 50px;
 }
 
 .main-content {
   width: 70%;
   margin-right: 40px;
-  margin-bottom: 10px;
 }
 
 .side-content {
@@ -50,6 +49,7 @@ body {
 
   .main-content {
     width: 100%;
+    margin-bottom: 30px;
   }
 
   .side-content {
@@ -65,12 +65,10 @@ footer {
   padding: 26px 0;
   margin-top: auto;
   text-align: center;
-  background: #432;
 }
 
 footer p {
   font-size: 0.875rem;
-  color: #fff;
 }
 
 h2 {

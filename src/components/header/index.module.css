@@ -9,8 +9,7 @@
   display: flex;
   justify-content: space-between;
   padding: 0 8px;
-  color: #fff;
-  background: #432;
+  border-bottom: #a9a9a9 solid 2px;
 }
 
 .siteText {

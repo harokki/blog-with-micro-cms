@@ -30,7 +30,7 @@ export const Bio: React.FC<P> = ({ categories, selfIntroduction }) => {
         {categories?.map((category) => (
           <Link key={category.id} href={`/category/${category.id}`}>
             <a key={category.id} className={styles.categoryTag}>
-              {category.name}
+              {`#${category.name}`}
             </a>
           </Link>
         ))}
