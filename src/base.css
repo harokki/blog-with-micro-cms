@@ -103,8 +103,8 @@ ul li ul li {
 pre {
   padding: 1em; /* ブロック内の余白 */
   margin: 1em 0; /* ブロック前後の余白 */
+  overflow: auto;
   color: #fff; /* 文字色 */
-  white-space: pre-wrap; /* はみ出たときに折り返す */
   background: #25292f; /* 背景色 */
   border-radius: 5px; /* 角丸 */
 }
