@@ -11,19 +11,18 @@ export const SiteHeader: React.FC = () => {
 
   return (
     <header className={styles.pageHeader}>
-      <div className={styles.logoContainer}>
-        <a onClick={() => handleClickLogo()} aria-hidden="true">
-          <img className={styles.userIcon} src="/header.png" alt="site icon" />
-        </a>
-        <div className={styles.siteText}>{siteName}</div>
+      <div className={styles.headerContent}>
+        <div className={styles.logoContainer}>
+          <a onClick={() => handleClickLogo()} aria-hidden="true">
+            <img
+              className={styles.userIcon}
+              src="/header.png"
+              alt="site icon"
+            />
+          </a>
+          <div className={styles.siteText}>{siteName}</div>
+        </div>
       </div>
-      <nav>
-        <ul className={styles.mainNav}>
-          <li onClick={() => handleClickLogo()} aria-hidden="true">
-            Home
-          </li>
-        </ul>
-      </nav>
     </header>
   );
 };

@@ -12,6 +12,17 @@
   border-bottom: #a9a9a9 solid 2px;
 }
 
+.headerContent {
+  width: 80%;
+  margin: 0 auto;
+}
+
+@media only screen and (max-width: 750px) {
+  .headerContent {
+    width: 100%;
+  }
+}
+
 .siteText {
   display: flex;
   flex-direction: column;
@@ -21,20 +32,5 @@
 
 .logoContainer {
   display: flex;
-}
-
-.mainNav {
-  display: flex;
-  margin-top: 34px;
-  font-size: 1.25rem;
-  list-style: none;
-}
-
-.mainNav li {
-  margin-left: 36px;
-  cursor: pointer;
-}
-
-.mainNav li:hover {
-  text-decoration: underline;
+  padding: 5px 0;
 }
