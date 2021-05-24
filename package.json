@@ -16,6 +16,7 @@
     "lint:conflict": "eslint --print-config .eslintrc.js | eslint-config-prettier-check"
   },
   "dependencies": {
+    "@icons-pack/react-simple-icons": "^4.3.0",
     "camelcase-keys": "^6.2.2",
     "date-fns": "^2.21.1",
     "date-fns-tz": "^1.1.4",
