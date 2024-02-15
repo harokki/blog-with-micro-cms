@@ -23,7 +23,7 @@ export const BlogLink: React.FC<P> = ({ blog }) => {
 
     return (
       <>
-        <Link href={blog.externalUrl}>
+        <Link legacyBehavior href={blog.externalUrl}>
           <a
             className={styles.blogLink}
             target="_blank"
@@ -38,7 +38,7 @@ export const BlogLink: React.FC<P> = ({ blog }) => {
   }
 
   return (
-    <Link href={`/blog/${blog.id}`}>
+    <Link legacyBehavior href={`/blog/${blog.id}`}>
       <a className={styles.blogLink}>{blog.title}</a>
     </Link>
   );

@@ -14,7 +14,11 @@ const blogCategories = (categories: CategoryResponse[]) => {
   return (
     <div className={styles.categories}>
       {categories.map((category) => (
-        <Link key={category.id} href={`/category/${category.id}`}>
+        <Link
+          legacyBehavior
+          key={category.id}
+          href={`/category/${category.id}`}
+        >
           <span key={category.id} className={styles.category}>
             {category.name}
           </span>

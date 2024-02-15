@@ -18,12 +18,12 @@ export const PaginationArrow: React.FC<P> = ({
   return (
     <div className={styles.arrowPagination}>
       {currentPageNumber !== 1 && (
-        <Link href={`/blog/page/${prevPage}`}>
+        <Link legacyBehavior href={`/blog/page/${prevPage}`}>
           <a data-testid="previous">&lt; Previous</a>
         </Link>
       )}
       {currentPageNumber !== maxPageNumber && (
-        <Link href={`/blog/page/${nextPage}`}>
+        <Link legacyBehavior href={`/blog/page/${nextPage}`}>
           <a data-testid="next" className={styles.nextArrow}>
             Next &gt;
           </a>
