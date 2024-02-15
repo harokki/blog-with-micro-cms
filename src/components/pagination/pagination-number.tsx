@@ -16,7 +16,7 @@ export const PaginationNumber: React.FC<P> = ({ maxPageNumber }) => {
       {range(1, maxPageNumber).map((number, index) => (
         // eslint-disable-next-line react/no-array-index-key
         <li key={index}>
-          <Link href={`/blog/page/${number}`}>
+          <Link legacyBehavior href={`/blog/page/${number}`}>
             <a>{number}</a>
           </Link>
         </li>

@@ -28,7 +28,7 @@ export const Bio: React.FC<P> = ({ categories, selfIntroduction }) => {
       <div className="side-category">
         <p className={styles.categoryTitle}>カテゴリ一覧</p>
         {categories?.map((category) => (
-          <Link key={category.id} href={`/category/${category.id}`}>
+          <Link legacyBehavior key={category.id} href={`/category/${category.id}`}>
             <a key={category.id} className={styles.categoryTag}>
               {`#${category.name}`}
             </a>

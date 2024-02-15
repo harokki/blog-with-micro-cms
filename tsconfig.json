@@ -19,7 +19,8 @@
     "noEmit": true,
     "jsx": "preserve",
     "baseUrl": "src",
-    "downlevelIteration": true
+    "downlevelIteration": false,
+    "incremental": false
   },
   "include": [
     "next-env.d.ts",
