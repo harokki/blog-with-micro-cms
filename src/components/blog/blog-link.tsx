@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import React from 'react';
-import { Zenn } from '@icons-pack/react-simple-icons';
+import { Zenn, Qiita } from '@icons-pack/react-simple-icons';
 
 import { BlogResponse } from 'domains/microCMS/models/blog';
 import styles from './index.module.css';
@@ -12,6 +12,10 @@ type P = {
 const getIcon = (hostname: string) => {
   if (hostname === 'zenn.dev') {
     return <Zenn color="#3EA8FF" size={18} />;
+  }
+
+  if (hostname === 'qiita.com') {
+    return <Qiita color="#55C500" size={36} />;
   }
 
   return null;
